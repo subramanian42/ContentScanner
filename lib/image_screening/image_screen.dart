@@ -4,6 +4,8 @@ import 'package:contentscanner/image_screening/image_screening_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../.env.dart';
+
 class ImageScreen extends StatefulWidget {
   const ImageScreen({super.key});
 
@@ -17,7 +19,7 @@ class _ImageScreenState extends State<ImageScreen> {
   @override
   void initState() {
     super.initState();
-    provider = ImageScreeningProvider('');
+    provider = ImageScreeningProvider(api_key);
   }
 
   @override
