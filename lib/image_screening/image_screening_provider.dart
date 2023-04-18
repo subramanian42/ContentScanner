@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ImageScreeningProvider {
-  final apiKey;
+  final String apiKey;
   ImageScreeningProvider(this.apiKey);
   Future<bool> verifyImage(File file) async {
     try {
