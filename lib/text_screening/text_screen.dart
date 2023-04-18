@@ -70,16 +70,8 @@ void _showDialog(BuildContext context, {List<String>? badWords, String? text}) {
     context: context,
     builder: (_) => AlertDialog(
       title: text != null ? null : const Text('Error'),
-      content: SizedBox(
-        width: 100,
-        height: 200,
-        child: Column(
-          children: [
-            Text(
-              text ?? 'Please enter appropriate text',
-            ),
-          ],
-        ),
+      content: Text(
+        text ?? 'Please enter appropriate text',
       ),
       actions: [
         TextButton(
