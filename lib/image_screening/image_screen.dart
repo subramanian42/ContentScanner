@@ -60,11 +60,18 @@ class _ImageScreenState extends State<ImageScreen> {
                     onPressed: _image != null
                         ? () async {
                             if (_image != null) {
-                              bool isNsfw = await provider.verifyImage(_image!);
-
                               setState(() {
                                 isLoading = true;
                               });
+                              bool isNsfw = await provider
+                                  .verifyImage(_image!)
+                                  .then((value) {
+                                setState(() {
+                                  isLoading = false;
+                                });
+                                return value;
+                              });
+
                               if (isNsfw) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   _snackBar("Image is Inappropriate",
