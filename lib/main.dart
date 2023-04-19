@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-import 'image_screening/http_override.dart';
-import 'landing_screen.dart';
+import 'core/http_override.dart';
+import 'landing_screen/screen/landing_screen.dart';
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Content Scanner',
-      home: LandingPageScreen(),
+      home: LandingScreen(),
     );
   }
 }
