@@ -1,7 +1,6 @@
 import 'package:contentscanner/text_verification/bloc/text_verification_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:profanity_filter/profanity_filter.dart';
 
 class TextScreen extends StatefulWidget {
   const TextScreen({super.key});
