@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.2
   http: ^0.13.5
   image_picker: ^0.8.7+3
   profanity_filter: ^2.0.0
