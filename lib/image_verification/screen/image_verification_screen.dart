@@ -5,24 +5,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ImageScreen extends StatefulWidget {
-  const ImageScreen({super.key});
+class ImageVerificationScreen extends StatefulWidget {
+  const ImageVerificationScreen({super.key});
 
   @override
-  State<ImageScreen> createState() => _ImageScreenState();
+  State<ImageVerificationScreen> createState() =>
+      _ImageVerificationScreenState();
 }
 
-class _ImageScreenState extends State<ImageScreen> {
-  late ImageBloc _bloc;
+class _ImageVerificationScreenState extends State<ImageVerificationScreen> {
+  late ImageVerificationScreenBloc _bloc;
   @override
   void initState() {
     super.initState();
-    _bloc = BlocProvider.of<ImageBloc>(context);
+    _bloc = BlocProvider.of<ImageVerificationScreenBloc>(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ImageBloc, ImageState>(
+    return BlocListener<ImageVerificationScreenBloc,
+        ImageVerificationScreenState>(
       listener: (context, state) {
         if (state is ImageVerifiedState) {
           if (state.isNsfw) {
@@ -59,7 +61,8 @@ class _ImageScreenState extends State<ImageScreen> {
               ),
             ),
             const SizedBox(height: 50),
-            BlocBuilder<ImageBloc, ImageState>(
+            BlocBuilder<ImageVerificationScreenBloc,
+                ImageVerificationScreenState>(
               builder: (context, state) {
                 if (state is ImageLoadingState) {
                   return const Center(child: CircularProgressIndicator());

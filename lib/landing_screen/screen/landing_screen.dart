@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../.env.dart';
 
-import '../../image_verification/bloc/image_bloc.dart';
+import '../../image_verification/bloc/image_verification_screen_bloc.dart';
 import '../../image_verification/screen/image_verification_screen.dart';
-import '../../core/repositories/image_screening_provider.dart';
-import '../../text_verifcation/screen/text_verification_screen.dart';
+import '../../core/repositories/image_repository.dart';
+import '../../text_verification/text_verification.dart';
 
 import '../bloc/landing_screen_bloc.dart';
 
@@ -47,12 +47,13 @@ class _LandingScreenBodyState extends State<LandingScreenBody> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ImageBloc>(
-          create: (context) => ImageBloc(ImageScreeningRepository(api_key)),
+        BlocProvider<ImageVerificationScreenBloc>(
+          create: (context) =>
+              ImageVerificationScreenBloc(ImageScreeningRepository(api_key)),
         ),
-        // BlocProvider<TextBloc>(
-        //   create: (context) => TextBloc(),
-        // ),
+        BlocProvider<TextVerificationScreenBloc>(
+          create: (context) => TextVerificationScreenBloc(),
+        ),
       ],
       child: BlocBuilder<LandingScreenBloc, LandingScreenState>(
         buildWhen: (prevState, state) {
@@ -83,7 +84,7 @@ class _LandingScreenBodyState extends State<LandingScreenBody> {
       case 0:
         return const TextScreen();
       case 1:
-        return const ImageScreen();
+        return const ImageVerificationScreen();
       default:
         return const Scaffold(
           body: Center(
